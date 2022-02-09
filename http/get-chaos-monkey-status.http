@@ -1,0 +1,13 @@
+GET http://localhost:8080/actuator/chaosmonkey/status
+
+
+#HTTP/1.1 200
+#Content-Type: text/plain;charset=UTF-8
+#Content-Length: 17
+#Date: Wed, 09 Feb 2022 06:20:09 GMT
+#Keep-Alive: timeout=60
+#Connection: keep-alive
+#
+#Ready to be evil!
+#
+#Response code: 200; Time: 197ms; Content length: 17 bytes

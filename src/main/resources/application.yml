@@ -1,0 +1,13 @@
+management:
+  endpoint:
+    chaosmonkey:
+      enabled: true
+
+  endpoints:
+    web:
+      exposure:
+        # include specific endpoints
+        include:
+          - health
+          - info
+          - chaosmonkey

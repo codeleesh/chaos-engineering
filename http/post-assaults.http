@@ -1,0 +1,12 @@
+POST http://localhost:8080/actuator/chaosmonkey/assaults
+Content-Type: application/json
+
+{
+  "level": 1,
+  "deterministic": true,
+  "latencyRangeStart": 1000,
+  "latencyRangeEnd": 3000,
+  "latencyActive": true,
+  "exceptionsActive": false,
+  "killApplicationActive": false
+}

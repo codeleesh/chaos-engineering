@@ -1,0 +1,15 @@
+POST http://localhost:8080/actuator/chaosmonkey/assaults
+Content-Type: application/json
+
+{
+  "level": 5,
+  "latencyRangeStart": 2000,
+  "latencyRangeEnd": 5000,
+  "latencyActive": true,
+  "exceptionsActive": true,
+  "killApplicationActive": false,
+  "watchedCustomServices": [
+    "com.example.chaos.monkey.chaosdemo.controller.HelloController.sayHello",
+    "com.example.chaos.monkey.chaosdemo.controller.HelloController.sayGoodbye"
+  ]
+}
