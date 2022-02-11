@@ -2,8 +2,9 @@ POST http://localhost:8080/actuator/chaosmonkey/assaults
 Content-Type: application/json
 
 {
-  "level": 1,
+  "latencyActive": false,
   "exceptionsActive": true,
+  "killApplicationActive": false,
   "exception": {
     "type": "java.lang.RuntimeException",
     "arguments": null

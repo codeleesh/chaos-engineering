@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
   "level": 1,
-  "memoryActive": true,
+  "memoryActive": false,
   "memoryMillisecondsHoldFilledMemory": 90000,
   "memoryMillisecondsWaitNextIncrease": 1000,
   "memoryFillIncrementFraction": 0.15,

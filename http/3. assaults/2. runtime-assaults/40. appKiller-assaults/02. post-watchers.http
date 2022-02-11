@@ -1,0 +1,13 @@
+POST http://localhost:8080/actuator/chaosmonkey/watchers
+Content-Type: application/json
+
+{
+  "controller": false,
+  "restController": true,
+  "service": true,
+  "repository": true,
+  "component": true,
+  "restTemplate": false,
+  "webClient": false,
+  "actuatorHealth": false
+}

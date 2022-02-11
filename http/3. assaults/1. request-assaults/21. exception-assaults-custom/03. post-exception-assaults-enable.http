@@ -1,0 +1,20 @@
+POST http://localhost:8080/actuator/chaosmonkey/assaults
+Content-Type: application/json
+
+{
+  "level": 5,
+  "latencyRangeStart": 2000,
+  "latencyRangeEnd": 5000,
+  "latencyActive": true,
+  "exceptionsActive": true,
+  "killApplicationActive": false,
+  "exception": {
+    "type": "java.lang.IllegalArgumentException",
+    "arguments": [
+      {
+        "className": "java.lang.String",
+        "value": "custom illegal argument exception"
+      }
+    ]
+  }
+}
