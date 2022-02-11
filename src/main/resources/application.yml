@@ -1,3 +1,22 @@
+spring:
+  profiles:
+    active: chaos-monkey
+
+---
+spring:
+  config:
+    activate:
+      on-profile: chaos-monkey
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: false
+
+
 management:
   endpoint:
     chaosmonkey:
@@ -11,3 +30,28 @@ management:
           - health
           - info
           - chaosmonkey
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: false
+
+logging:
+  level:
+    root: trace
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
