@@ -40,7 +40,7 @@
 - Spring Boot에서 쉽게 사용할 수 있도록 만든 라이브러리
 
 
-### CM4SB 동작 방식
+### CM4SB 동작 방식
 
 > 참고
 >
@@ -55,7 +55,7 @@
 - Assault : 공격 종류
 
 
-### Properties
+### Properties
 
 > 참고
 >
@@ -107,7 +107,7 @@
 
 #### Annotation Watchers
 
-애플리케이션의 해당 빈을 찾는 관찰자 역할
+애플리케이션의 해당 빈을 찾는 감시자 역할
 
 - @Controller
 
@@ -128,13 +128,9 @@ Chaos Monkey도 Spring Boot의 auto-configures인 `HealthIndicators`를 볼 수 
 >
 > [Production-ready Features (spring.io)](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.endpoints.health.auto-configured-health-indicators)
 
-예외 및 대기 시간으로 상태 확인을 공격합니다. 예외는 HealthIndicators가 DOWN 상태로 들어가고 지연 공격이 응답을 연기하도록 합니다.
-
 #### Outgoing Request Watchers
 
 감시자는 주어진 공격 구성을 기반으로 Spring 컨텍스트의 모든 RestTemplate 및 WebClient 빈에 대한 공격을 주입합니다.
-
-다음의 감시자 대상을 제공합니다.
 
 - RestTemplate
 
@@ -149,13 +145,13 @@ Chaos Monkey도 Spring Boot의 auto-configures인 `HealthIndicators`를 볼 수 
 
 #### Alternative Bean Watcher
 
-Chaos Monkey는 이름으로 애플리케이션의 모든 Bean을 볼 수 있습니다.
+Spring profile인 `chaos-monkey` 이름으로 애플리케이션의 모든 Bean을 처리할 수 있습니다.
 
 > 참고
 >
-> chaos monkey 프로필이 활성화되어 있어야 하며 빈이 생성될 때 빈 이름을 구성해야 합니다. Bean이 생성된 후 구성에 Bean 이름을 추가하면 이를 감시할 수 없습니다.
+> `chaos-monkey` 프로필이 활성화되어 있어야 하며 빈이 생성될 때 빈 이름을 구성해야 합니다. Bean이 생성된 후 구성에 Bean 이름을 추가하면 이를 감시할 수 없습니다.
 
-### Customize Watcher
+### Customize Watcher
 
 watchCustomServices 속성을 사용하여 모든 감시자의 동작을 사용자 정의하고 공격해야 하는 클래스와 공개 메서드를 결정할 수 있습니다.
 
@@ -164,6 +160,8 @@ watchCustomServices 속성을 사용하여 모든 감시자의 동작을 사용�
 WatchedCustomServices가 설정되어 있지 않으면 활성화된 감시자가 인식하는 모든 클래스와 공용 메서드가 공격을 받습니다.
 
 애플리케이션 속성에서 목록을 유지하거나 Spring Boot Actuator Endpoint를 사용하여 런타임에 조정할 수 있습니다.
+
+아래는 예시입니다. API를 호출하여 설정할 수 있으며 또는 `application.yml` 설정을 통하여도 가능합니다.
 
 `Chaos Monkey Spring Boot Actuator Endpoint (/actuator/chaosmonkey/assaults)`
 
@@ -198,7 +196,7 @@ chaos:
 
 > 참고
 >
-> 이 목록은 감시자가 발견한 공격 클래스만 제한합니다. 이 목록이 설정되지 않았을 때 클래스나 메소드가 공격받지 않았다면 목록에 추가되어도 공격을 받지 않습니다.
+> 이 목록은 감시자가 발견한 공격 클래스만 제한합니다.
 
 ### Assaults 종류
 
@@ -209,7 +207,6 @@ chaos:
 - Runtime Assaults
 
 - Chaos Monkey Assault Scheduler
-
 
 #### Request Assaults
 
@@ -230,7 +227,7 @@ chaos:
 }
 ```
 
-다음 요청 공격의 항목은 다음과 같습니다.
+요청 공격의 항목은 다음과 같습니다.
 
 - Latency Assaults
 
@@ -282,8 +279,6 @@ Actuator Endpoint를 통해 런타임 시 필요한 예외를 구성할 수 있�
 
 - 메모리 공격은 사용 중인 Java 버전에 따라 크게 달라집니다. 우리는 각 자바 버전의 기본 가비지 수집기로 테스트 중입니다. Java 8에서 채우기 속도는 슬라이스당 256MB로 제한됩니다
 
-> 슬라이스?
-
 ##### Cpu Assaults
 
 CPU 공격은 Java 가상 머신의 CPU를 공격합니다.
@@ -298,7 +293,7 @@ CPU 공격은 Java 가상 머신의 CPU를 공격합니다.
 
 ## 설정
 
-### 개발 환경
+### 개발 환경
 
 - IDE : Intelij 2021.2.2
 
@@ -307,18 +302,18 @@ CPU 공격은 Java 가상 머신의 CPU를 공격합니다.
 - Spring Boot : 2.5.8
 
 
-### Gradle
+### Gradle
 
 ```
 dependencies {
-    ...
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'de.codecentric:chaos-monkey-spring-boot:2.5.4'
-    ...
+    ...
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'de.codecentric:chaos-monkey-spring-boot:2.5.4'
+    ...
 }
 ```
 
-### application.yml
+### application.yml
 
 ```
 management:
@@ -336,7 +331,7 @@ management:
           - chaosmonkey
 ```
 
-### application 실행
+### application 실행
 
 ```
      _____ _                       __  __             _
@@ -351,7 +346,7 @@ management:
 :: Chaos Monkey for Spring Boot                                    ::
 ```
 
-### HTTP Endpoint
+### HTTP Endpoint
 
 로컬호스트 기준
 
@@ -374,11 +369,11 @@ management:
 
 [Chaos Monkey HTTP_Endpoint](https://codecentric.github.io/chaos-monkey-spring-boot/latest/#_http_endpoint)
 
-### 실습
+### 실습
 
-#### Latency Assaults
+#### Latency Assaults
 
-##### 설정을 위한 호출
+##### 설정을 위한 호출
 
 - chaos-monkey 활성화
 
@@ -387,7 +382,7 @@ management:
 - assaults 활성화 및 설정값
 
 
-##### 소스
+##### 소스
 
 `@RestController` 와 `@Service`를 간단하게 생성
 
@@ -418,6 +413,6 @@ public class HelloService {
 }
 ```
 
-#### Exception Assaults
+#### Exception Assaults
 
-#### Memory Assaults
+#### Memory Assaults
