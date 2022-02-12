@@ -6,5 +6,6 @@ Content-Type: application/json
   "memoryMillisecondsHoldFilledMemory": 90000,
   "memoryMillisecondsWaitNextIncrease": 1000,
   "memoryFillIncrementFraction": 0.15,
-  "memoryFillTargetFraction": 0.25
+  "memoryFillTargetFraction": 0.25,
+  "memoryCronExpression": "OFF"
 }

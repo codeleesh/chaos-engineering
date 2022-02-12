@@ -2,10 +2,5 @@ POST http://localhost:8080/actuator/chaosmonkey/assaults
 Content-Type: application/json
 
 {
-  "level": 1,
-  "memoryActive": false,
-  "memoryMillisecondsHoldFilledMemory": 90000,
-  "memoryMillisecondsWaitNextIncrease": 1000,
-  "memoryFillIncrementFraction": 0.15,
-  "memoryFillTargetFraction": 0.25
+  "memoryActive": false
 }

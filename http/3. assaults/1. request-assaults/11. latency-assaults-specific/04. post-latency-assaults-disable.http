@@ -2,11 +2,6 @@ POST http://localhost:8080/actuator/chaosmonkey/assaults
 Content-Type: application/json
 
 {
-  "level": 1,
-  "latencyRangeStart": 1000,
-  "latencyRangeEnd": 3000,
   "latencyActive": false,
-  "watchedCustomServices": [
-    "chaos.engineering.controller.GoodByeController.goodBye"
-  ]
+  "watchedCustomServices": null
 }

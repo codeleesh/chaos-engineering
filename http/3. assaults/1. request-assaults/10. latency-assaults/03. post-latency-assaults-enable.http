@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
   "level": 1,
-  "latencyRangeStart": 1000,
-  "latencyRangeEnd": 3000,
+  "latencyRangeStart": 5000,
+  "latencyRangeEnd": 10000,
   "latencyActive": true
 }

@@ -6,7 +6,6 @@ Content-Type: application/json
   "exceptionsActive": true,
   "killApplicationActive": false,
   "exception": {
-    "type": "java.lang.RuntimeException",
-    "arguments": null
+    "type": "java.lang.RuntimeException"
   }
 }
